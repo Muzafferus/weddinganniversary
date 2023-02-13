@@ -7,7 +7,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.muzafferus.weddinganniversary.navigation.SetupNavGraph
 import com.muzafferus.weddinganniversary.ui.theme.WeddingAnniversaryTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
