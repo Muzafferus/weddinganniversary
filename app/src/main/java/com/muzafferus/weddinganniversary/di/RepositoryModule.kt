@@ -19,10 +19,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideDataStoreOperations(
-        @ApplicationContext context: Context
-    ): DataStoreOperations {
-        return DataStoreOperationsImpl(context = context)
+    fun provideDataStoreOperations(): DataStoreOperations {
+        return DataStoreOperationsImpl()
     }
 
     @Provides

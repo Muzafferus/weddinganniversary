@@ -22,7 +22,6 @@ class HomeViewModel @Inject constructor(
     val coupleData: StateFlow<ArrayList<CoupleData>> = _coupleData
 
     init {
-
         viewModelScope.launch(Dispatchers.IO) {
             _coupleData.value =
                 useCases.getCoupleDataUseCase()
