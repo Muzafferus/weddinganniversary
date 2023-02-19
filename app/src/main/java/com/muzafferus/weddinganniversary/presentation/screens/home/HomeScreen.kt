@@ -21,6 +21,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -110,6 +112,9 @@ fun CoupleItem(data: CoupleData) {
             .border(width = 1.dp, color = Purple700, shape = RoundedCornerShape(8.dp))
             .padding(2.dp)
             .background(color = Util.getColor(data.coupleWeddingDate))
+            .semantics {
+                contentDescription = "MainRow"
+            }
     ) {
         Column(
             modifier = Modifier
@@ -139,7 +144,13 @@ fun CoupleItem(data: CoupleData) {
 
         if (Util.isHasTwoWeeks(data.coupleWeddingDate))
             Column(
-                modifier = Modifier.fillMaxHeight().fillMaxSize().fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxSize()
+                    .fillMaxWidth()
+                    .semantics {
+                        contentDescription = "NoteColumn"
+                    },
                 verticalArrangement = Arrangement.Center
             ) {
                 Icon(
