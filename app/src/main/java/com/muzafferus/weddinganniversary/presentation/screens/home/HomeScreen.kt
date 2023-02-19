@@ -104,58 +104,63 @@ fun ListContent(data: ArrayList<CoupleData>) {
 
 @Composable
 fun CoupleItem(data: CoupleData) {
-
     Row(
         modifier = Modifier
-            .fillMaxWidth(1f)
+            .height(100.dp)
+            .fillMaxWidth()
             .padding(2.dp)
             .border(width = 1.dp, color = Purple700, shape = RoundedCornerShape(8.dp))
             .padding(2.dp)
             .background(color = Util.getColor(data.coupleWeddingDate))
-            .semantics {
-                contentDescription = "MainRow"
-            }
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth(0.8f)
+                .semantics {
+                    contentDescription = "MainRow"
+                }
         ) {
-            Text(
-                modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
-                text = data.coupleNames,
-                color = Color.Black,
-                fontSize = MaterialTheme.typography.subtitle1.fontSize,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
-                text = "ID: ${data.coupleId}",
-                color = Color.Gray,
-                fontSize = MaterialTheme.typography.subtitle2.fontSize,
-                fontWeight = FontWeight.Light
-            )
-            Text(
-                modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
-                text = Util.parseDate(data.coupleWeddingDate),
-                color = Color.Black,
-                fontSize = MaterialTheme.typography.caption.fontSize
-            )
+            Column {
+                Text(
+                    modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
+                    text = data.coupleNames,
+                    color = Color.Black,
+                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
+                    text = "ID: ${data.coupleId}",
+                    color = Color.Gray,
+                    fontSize = MaterialTheme.typography.subtitle2.fontSize,
+                    fontWeight = FontWeight.Light
+                )
+                Text(
+                    modifier = Modifier.padding(start = SMALL_PADDING, bottom = SMALL_PADDING),
+                    text = Util.parseDate(data.coupleWeddingDate),
+                    color = Color.Black,
+                    fontSize = MaterialTheme.typography.caption.fontSize
+                )
+            }
         }
 
         if (Util.isHasTwoWeeks(data.coupleWeddingDate))
-            Column(
+            Row(
                 modifier = Modifier
-                    .fillMaxHeight()
                     .fillMaxSize()
-                    .fillMaxWidth()
                     .semantics {
                         contentDescription = "NoteColumn"
                     },
-                verticalArrangement = Arrangement.Center
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_network_error),
-                    contentDescription = ""
+                    modifier = Modifier
+                        .width(32.dp)
+                        .height(32.dp),
+                    painter = painterResource(id = R.drawable.ic_party),
+                    contentDescription = "NoteIcon",
+                    tint= Color.Unspecified
                 )
             }
     }
@@ -166,7 +171,7 @@ fun CoupleItem(data: CoupleData) {
 fun EmptyScreenPreview() {
     EmptyContent(
         alphaAnim = ContentAlpha.disabled,
-        icon = R.drawable.ic_network_error,
+        icon = R.drawable.ic_party,
         message = "Internet Unavailable."
     )
 }
@@ -176,7 +181,7 @@ fun EmptyScreenPreview() {
 fun EmptyScreenDarkPreview() {
     EmptyContent(
         alphaAnim = ContentAlpha.disabled,
-        icon = R.drawable.ic_network_error,
+        icon = R.drawable.ic_party,
         message = "Internet Unavailable."
     )
 }

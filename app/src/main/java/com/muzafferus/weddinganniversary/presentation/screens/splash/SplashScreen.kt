@@ -49,7 +49,7 @@ fun Splash() {
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.mipmap.ic_launcher),
+            painter = painterResource(id = R.drawable.app_logo),
             contentDescription = stringResource(R.string.app_logo)
         )
     }
